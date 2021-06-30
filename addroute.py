@@ -50,3 +50,7 @@ for hostname in route_list.keys():
         toecho += f"iroute {item['subnet']} {item['netmask']}\n"
     cmd = f""" echo '{toecho}' | docker run -v {SERVER_VOLUME_NAME}:/etc/openvpn -i --rm kylemanna/openvpn tee /etc/openvpn/ccd/{hostname} """
     os.system(cmd)
+
+# restart docker
+cmd = f"""docker container restart {SERVER_DOCKER_NAME}"""
+os.system(cmd)
