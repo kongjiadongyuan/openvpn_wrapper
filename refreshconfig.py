@@ -33,7 +33,7 @@ for item in content:
     route_list[hostname].append(toinsert)
 
 # generate openvpn.conf
-cmd = f"docker run -v {SERVER_VOLUME_NAME}:/etc/openvpn -it --rm kylemanna/openvpn ovpn_genconfig -u udp://{SERVER_ADDR} -d -D -b -c -s {VPN_SUBNET}"
+cmd = f"docker run -v {SERVER_VOLUME_NAME}:/etc/openvpn -it --rm kylemanna/openvpn ovpn_genconfig -u {CONNECT_METHOD}://{SERVER_ADDR}:{CONNECT_PORT} -d -D -b -c -s {VPN_SUBNET}"
 for hostname in route_list.keys():
     for item in route_list[hostname]:
         cmd += f''' -r "{item['subnet']}/{item['prefix_length']}" '''
