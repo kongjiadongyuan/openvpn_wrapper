@@ -1,1 +1,7 @@
-intelnuc 172.18.0.0/16
+# add every route item  like this
+#  ${client_name} ${ip}/${prefix_length}
+#  for example:
+#    testclient 192.168.32.0/24
+# Specifically, if ${client_name}=='_self', the server will take over the route
+
+_self 197.97.97.0/24
